@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>Mapa para o GeoCampo</title>
+<link rel="icon" href="icone.png">
+<style>
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:#1A1A1A; background:#F4F6F4; line-height:1.6; }
+  main { max-width:480px; margin:0 auto; padding:40px 16px; text-align:center; }
+  img { width:88px; height:88px; border-radius:18px; }
+  h1 { color:#1F4E2C; font-size:1.4rem; }
+  a.b { display:block; padding:14px; margin:12px 0; border-radius:12px; background:#1F4E2C; color:#fff; font-weight:700; text-decoration:none; }
+  a.s { background:#2E7D46; }
+  small { color:#5f6b62; }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <img src="icone.png" alt="GeoCampo">
+  <h1>Você recebeu um mapa</h1>
+  <p id="invalido" hidden>Este link está incompleto. Peça um link novo a quem enviou.</p>
+  <a class="b" id="abrir" hidden>Abrir no GeoCampo</a>
+  <p>Ainda não tem o aplicativo, ou o botão não abriu? Instale ou atualize e toque de novo no link.</p>
+  <a class="b s" href="https://apps.apple.com/br/app/geocampo/id6827265265">Baixar para iPhone</a>
+  <a class="b s" href="https://play.google.com/store/apps/details?id=br.com.planalto.geocampo">Baixar para Android</a>
+  <small>O mapa fica no Google Drive de quem enviou. Esta página não recebe nem guarda o mapa.</small>
+</main>
+<script>
+  var id = location.hash.slice(1);
+  if (/^[A-Za-z0-9_-]{20,120}$/.test(id)) {
+    var a = document.getElementById('abrir');
+    a.href = 'geocampo://mapa?id=' + id;
+    a.hidden = false;
+  } else {
+    document.getElementById('invalido').hidden = false;
+  }
+</script>
+</body>
+</html>
